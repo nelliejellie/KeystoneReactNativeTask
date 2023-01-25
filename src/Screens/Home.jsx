@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import inventories from '../data'
 import { AntDesign } from '@expo/vector-icons';
+import Stuff from '../Components/Stuff';
 
 const Home = () => {
   return (
