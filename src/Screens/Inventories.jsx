@@ -15,7 +15,7 @@ const Inventories = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState(0)
   const [selectedValue, setSelectedValue] = useState("jewelry");
   const [selectedImage, setSelectedImage] = useState(null);
   const [inventoriesStore, setInventoriesStore] = useState(inventories)
@@ -39,10 +39,23 @@ const Inventories = () => {
     console.log(value)
   }
 
+  const sumOfArrays = () =>{
+    const numbers = inventoriesStore.map(item => item.purchasePrice);
+    console.log(numbers)
+    const totalValue = numbers.reduce((a,c)=> a+parseInt(c),0)
+    console.log(totalValue)
+    return totalValue
+  }
+
   const createNewItem = () =>{
     if(validator.isEmpty(name) || validator.isEmpty(value) || selectedImage === null){
       setModalVisible(!modalVisible);
       toast.show("Please input Name, price and image",{type:Warning,placement: "top",
+      duration: 4000,
+      animationType: "slide-in"});
+    }else if(sumOfArrays() > 40000){
+      setModalVisible(!modalVisible);
+      toast.show("total inventory value cannot be more than 40,000 euros",{type:Warning,placement: "top",
       duration: 4000,
       animationType: "slide-in"});
     }else{
@@ -69,6 +82,7 @@ const Inventories = () => {
       <Modal
         animationType="slide"
         visible={modalVisible}
+        transparent={true}
         style={{
           backgroundColor:"#f7f2f2"
         }}
@@ -82,12 +96,12 @@ const Inventories = () => {
               <Pressable onPress={()=>{
                 setModalVisible(!modalVisible);
               }}>
-                <Text className="text-blue-800 font-semiboldsetModalVisible">Cancel</Text>
+                <Text className="text-blue-800 font-semibold">Cancel</Text>
               </Pressable>
               <Pressable
                 onPress={createNewItem}
               >
-                <Text className="text-blue-800">Add</Text>
+                <Text className="text-blue-800 font-semibold">Add</Text>
               </Pressable>
             </View>
             <View className="space-y-3 mt-5">
@@ -112,29 +126,37 @@ const Inventories = () => {
                   onChangeText={(text)=>{handleInputs(text, setName)}}
                   value={name}
                   placeholder="name"
-                  className="border border-gray-400 w-[90%] h-10 rounded-md pl-3 bg-white"
+                  className="border border-gray-400 w-[100%] h-14 rounded-md pl-3 bg-white"
                 />
               </View>
-              <View>
+              <View className="space-y-1">
                 <Text>Category</Text>
-                <Picker
-                  selectedValue={selectedValue}
-                  onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-                >
-                  <Picker.Item label="Jewelry" value="java" />
-                  <Picker.Item label="Arts" value="arts" />
-                  <Picker.Item label="Electronics" value="electronics" />
-                  <Picker.Item label="Musical Instrument" value="musical instruments" />
-                </Picker>
+                <View className="border border-gray-400 w-[100%] rounded-md">
+                  <Picker
+                    style={{
+                      backgroundColor:"white",
+                      width:'100%',
+                      color:"gray"
+                    }}
+                    selectedValue={selectedValue}
+                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                  >
+                    <Picker.Item label="Jewelry" value="java" />
+                    <Picker.Item label="Arts" value="arts" />
+                    <Picker.Item label="Electronics" value="electronics" />
+                    <Picker.Item label="Musical Instrument" value="musical instruments" />
+                  </Picker>
+                </View>
+                
               </View>
               <View className="space-y-1">
                 <Text className="text-bold">Value</Text>
                 <TextInput 
                   onChangeText={(text)=>{handleInputs(text, setValue)}}
                   value={value}
-                  placeholder="value"
+                  placeholder="price"
                   keyboardType='numeric'
-                  className="border border-gray-400 w-[90%] h-10 rounded-md pl-3 bg-white"
+                  className="border border-gray-400 w-[100%] h-14 rounded-md pl-3 bg-white"
                 />
               </View>
               <View className="space-y-1">
@@ -144,8 +166,8 @@ const Inventories = () => {
                   value={description}
                   multiline = {true}
                   numberOfLines = {8}
-                  placeholder="description"
-                  className="border border-gray-400 w-[90%] h-32 rounded-md pl-3 bg-white"
+                  placeholder=""
+                  className="border border-gray-400 w-[100%] h-32 rounded-md pl-3 bg-white"
                 />
               </View>
             </View>
