@@ -9,6 +9,7 @@ import Inventory from './src/Screens/Inventory';
 import Insurance from './src/Screens/Insurance';
 import More from './src/Screens/More';
 import { MaterialIcons } from '@expo/vector-icons';
+import Stuff from './src/Components/Stuff';
 
 const Tab = createBottomTabNavigator();
 
