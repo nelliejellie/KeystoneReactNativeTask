@@ -20,7 +20,7 @@ export default function App() {
     
       <NavigationContainer>
         <TailwindProvider>
-          <Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, tabBarActiveTintColor: '#0E1E5E', }} >
+          <Tab.Navigator initialRouteName="Inventories" screenOptions={{ headerShown: false, tabBarActiveTintColor: '#0E1E5E', }} >
             <Tab.Screen name="Home" component={Home} 
               options={{
                 tabBarLabel: 'Home',

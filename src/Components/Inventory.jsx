@@ -3,12 +3,12 @@ import React from 'react'
 
 const Inventory = ({name, photo, purchasePrice}) => {
   return (
-    <View className="rounded-md border border-white bg-white h-56">
+    <View className="rounded-md border border-white bg-white h-56 my-1">
       <Image
         source={{
             uri:photo
         }}
-        className="w-44 h-28 rounded-t-md"
+        className="w-40 h-28 rounded-t-md"
       />
       <View className="flex flex-col justify-between h-[40%] pl-4 pt-4">
         <Text className="font-extrabold text-lg">{name}</Text>
