@@ -5,11 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo } from '@expo/vector-icons';
 import Home from './src/Screens/Home';
-import Inventory from './src/Screens/Inventory';
+import Inventories from './src/Screens/Inventories';
 import Insurance from './src/Screens/Insurance';
 import More from './src/Screens/More';
 import { MaterialIcons } from '@expo/vector-icons';
-import Stuff from './src/Components/Stuff';
+import { FontAwesome } from '@expo/vector-icons';
+import Search from './src/Screens/Search';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,15 +25,7 @@ export default function App() {
               options={{
                 tabBarLabel: 'Home',
                 tabBarIcon: ({ color, size }) => (
-                  <Entypo name="home" size={24} color="black" />
-                ),
-              }}
-            />
-            <Tab.Screen name="Inventory" component={Inventory} 
-              options={{
-                tabBarLabel: 'Inventory',
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialIcons name="inventory" size={24} color="black" />
+                  <Entypo name="home" size={24} color="gray" />
                 ),
               }}
             />
@@ -40,7 +33,23 @@ export default function App() {
               options={{
                 tabBarLabel: 'Insurance',
                 tabBarIcon: ({ color, size }) => (
-                  <MaterialIcons name="inventory" size={24} color="black" />
+                  <FontAwesome name="umbrella" size={24} color="gray" />
+                ),
+              }}
+            />
+            <Tab.Screen name="Inventories" component={Inventories} 
+              options={{
+                tabBarLabel: 'Inventories',
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialIcons name="inventory" size={24} color="gray" />
+                ),
+              }}
+            />
+            <Tab.Screen name="Search" component={Search} 
+              options={{
+                tabBarLabel: 'Search',
+                tabBarIcon: ({ color, size }) => (
+                  <FontAwesome name="search" size={24} color="gray" />
                 ),
               }}
             />
@@ -48,7 +57,7 @@ export default function App() {
               options={{
                 tabBarLabel: 'More',
                 tabBarIcon: ({ color, size }) => (
-                  <Entypo name="menu" size={24} color="black" />
+                  <Entypo name="menu" size={24} color="gray" />
                 ),
               }}
             />
