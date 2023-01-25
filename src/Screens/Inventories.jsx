@@ -7,6 +7,9 @@ import Inventory from '../Components/Inventory';
 import * as ImagePicker from 'expo-image-picker';
 import AddImage from '../Components/AddImage';
 import ShowImage from '../Components/ShowImage';
+import { useToast } from 'react-native-toast-notifications';
+import validator from 'validator';
+import { Warning } from 'postcss';
 
 const Inventories = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,6 +19,7 @@ const Inventories = () => {
   const [selectedValue, setSelectedValue] = useState("jewelry");
   const [selectedImage, setSelectedImage] = useState(null);
   const [inventoriesStore, setInventoriesStore] = useState(inventories)
+  const toast = useToast();
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -36,21 +40,28 @@ const Inventories = () => {
   }
 
   const createNewItem = () =>{
-    console.log(inventoriesStore)
-    var newsy = {
-      id:Math.random() * 100,
-      name:name,
-      purchasePrice:value,
-      description:description,
-      type:selectedValue,
-      photo:selectedImage
+    if(validator.isEmpty(name) || validator.isEmpty(value) || selectedImage === null){
+      setModalVisible(!modalVisible);
+      toast.show("Please input Name, price and image",{type:Warning,placement: "top",
+      duration: 4000,
+      animationType: "slide-in"});
+    }else{
+      var newsy = {
+        id:Math.random() * 100,
+        name:name,
+        purchasePrice:value,
+        description:description,
+        type:selectedValue,
+        photo:selectedImage
+      }
+      setInventoriesStore([...inventoriesStore, newsy])
+      setModalVisible(!modalVisible);
+      setName("")
+      setDescription("")
+      setSelectedImage(null)
+      setValue("")
     }
-    setInventoriesStore([...inventoriesStore, newsy])
-    setModalVisible(!modalVisible);
-    setName("")
-    setDescription("")
-    setSelectedImage(null)
-    setValue("")
+    
   }
   return (
     

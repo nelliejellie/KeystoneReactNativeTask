@@ -11,13 +11,14 @@ import More from './src/Screens/More';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import Search from './src/Screens/Search';
+import { ToastProvider } from 'react-native-toast-notifications';
 
 const Tab = createBottomTabNavigator();
 
 
 export default function App() {
   return (
-    
+      <ToastProvider>
       <NavigationContainer>
         <TailwindProvider>
           <Tab.Navigator initialRouteName="Inventories" screenOptions={{ headerShown: false, tabBarActiveTintColor: '#0E1E5E', }} >
@@ -64,6 +65,7 @@ export default function App() {
           </Tab.Navigator>
         </TailwindProvider>
       </NavigationContainer>
+      </ToastProvider>
   );
 }
 
