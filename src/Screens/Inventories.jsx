@@ -1,4 +1,5 @@
 import { View, Text, SafeAreaView, Pressable, Modal, TextInput, TouchableWithoutFeedback, Keyboard, ScrollView} from 'react-native'
+import { StatusBar } from 'react-native'
 import React, {useState} from 'react'
 import inventories from '../data'
 import { AntDesign } from '@expo/vector-icons';
@@ -15,7 +16,7 @@ const Inventories = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState("")
   const [selectedValue, setSelectedValue] = useState("jewelry");
   const [selectedImage, setSelectedImage] = useState(null);
   const [inventoriesStore, setInventoriesStore] = useState(inventories)
@@ -43,8 +44,9 @@ const Inventories = () => {
     const numbers = inventoriesStore.map(item => item.purchasePrice);
     console.log(numbers)
     const totalValue = numbers.reduce((a,c)=> a+parseInt(c),0)
-    console.log(totalValue)
-    return totalValue
+    const maxTotVal = totalValue + parseInt(value)
+    console.log(maxTotVal)
+    return maxTotVal
   }
 
   const createNewItem = () =>{
@@ -79,6 +81,7 @@ const Inventories = () => {
   return (
     
     <SafeAreaView className="flex-1 mx-4 mt-20 bg-[#f7f2f2]">
+      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = {Platform.OS === "ios" ? "black" : "white"} translucent = {true}/>
       <Modal
         animationType="slide"
         visible={modalVisible}
@@ -89,6 +92,7 @@ const Inventories = () => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
+          <ScrollView>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View className="bg-[#f7f2f2] flex-1">
           <View className="mx-4 mt-10 bg-[#f7f2f2]">
@@ -174,6 +178,7 @@ const Inventories = () => {
           </View>
           </View>
           </TouchableWithoutFeedback>
+          </ScrollView>
         </Modal>
     <ScrollView>
       <View className="flex flex-row w-full justify-between items-center">

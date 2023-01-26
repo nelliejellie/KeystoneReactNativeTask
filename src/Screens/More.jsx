@@ -1,11 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 
 const More = () => {
   return (
-    <View>
-      <Text>More</Text>
-    </View>
+    <SafeAreaView className="flex-1 flex justify-center items-center">
+      <Text className="font-bold text-2xl text-center">More Things Are Coming 😊</Text>
+    </SafeAreaView>
   )
 }
 

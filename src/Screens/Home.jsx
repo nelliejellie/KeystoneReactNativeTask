@@ -7,18 +7,8 @@ import Inventory from '../Components/Inventory';
 
 const Home = () => {
   return (
-    <SafeAreaView className="flex-1 mx-4 mt-20">
-      {/* <View className="flex flex-row w-full justify-between items-center">
-        <Text className="text-xl font-bold">Inventory</Text>
-        <AntDesign name="pluscircle" size={24} color="blue" />
-      </View>
-      <View>
-        <FlatList
-          data={inventories}
-          renderItem={({item}) => <Inventory name={item.name} />}
-          keyExtractor={item => item.name}
-        />
-      </View> */}
+    <SafeAreaView className="flex-1 flex justify-center items-center">
+      <Text className="font-bold text-2xl">Welcome Home 😊</Text>
     </SafeAreaView>
   )
 }
