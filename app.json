@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "KeystoneReactNativeTask",
+    "name": "Keystone ReactNative Task",
     "slug": "KeystoneReactNativeTask",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/keystone.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,16 +18,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jerrynelson.keystonereactnativetask"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.jerrynelson.keystonereactnativetask"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "36631047-9baa-47fb-9a58-87bfb06057e5"
+      }
     }
   }
 }
