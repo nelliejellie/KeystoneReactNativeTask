@@ -171,7 +171,7 @@ const Inventories = () => {
                   multiline = {true}
                   numberOfLines = {8}
                   placeholder=""
-                  className="border border-gray-400 w-[100%] h-32 rounded-md pl-3 bg-white"
+                  className="border border-gray-400 w-[100%] h-28 mb-8 rounded-md pl-3 bg-white"
                 />
               </View>
             </View>
