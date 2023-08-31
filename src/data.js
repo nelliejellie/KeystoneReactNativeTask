@@ -3,7 +3,7 @@ const inventories = [
 	  id: 1,
 	  name: "Cartier ring",
 	  purchasePrice: 5780,
-	  type: "JEWELRY",
+	  type: "JEWELRIES",
 	  description: "Gift from my grandfather",
 	  photo: "https://i.ibb.co/znXC7LQ/marcus-lewis-U63z-XX2f7ho-unsplash.jpg",
   },
